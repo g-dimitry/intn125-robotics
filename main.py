@@ -4,7 +4,7 @@ from matplotlib.collections import PatchCollection
 import matplotlib.pyplot as plt
 import math
 from working_area import plot_working_area
-from utils import forward_kinematics, angle
+from utils import forward_kinematics, angle, inverse_kinematics
 
 # Modes:
 # 1 - Forward Kinematics
@@ -35,7 +35,7 @@ elif (mode == 2):
     theta_2 = math.acos((x*x + y*y - l_1 * l_1 - l_2 * l_2)/(2 * l_1 * l_2))
     theta_1 = math.atan(
         y/x) - math.atan((l_2 * math.sin(theta_2))/(l_1 + l_2 * math.cos(theta_2)))
-
+    inverse_kinematics(l_1, l_2, x, y)
     print(math.degrees(theta_1))
     print(math.degrees(theta_2))
 elif (mode == 3):
