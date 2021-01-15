@@ -45,5 +45,5 @@ elif (mode == 3):
     theta_1_max = int(input("Please input theta 1 max in angles: "))
     theta_2_min = int(input("Please input theta 2 min in angles: "))
     theta_2_max = int(input("Please input theta 2 max in angles: "))
-    working_area.plot_working_area(
+    plot_working_area(
         l_1, l_2, theta_1_min, theta_1_max, theta_2_min, theta_2_max)

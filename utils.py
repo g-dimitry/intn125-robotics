@@ -8,9 +8,10 @@ def angle(vector_1, vector_2):
     return angle
 
 
-def forward_kinematics(l_1, l_2, theta_1, theta_2):
-    theta_1 = math.radians(theta_1)
-    theta_2 = math.radians(theta_2)
+def forward_kinematics(l_1, l_2, theta_1, theta_2, in_radians = False):
+    if (in_radians == False):
+        theta_1 = math.radians(theta_1)
+        theta_2 = math.radians(theta_2)
     x = l_1 * math.cos(theta_1) + l_2 * math.cos(theta_1 + theta_2)
     y = l_1 * math.sin(theta_1) + l_2 * math.sin(theta_1 + theta_2)
     return [x, y]
