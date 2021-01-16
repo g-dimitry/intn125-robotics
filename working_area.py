@@ -150,9 +150,9 @@ def plot_working_area(l_1, l_2, theta_1_min, theta_1_max, theta_2_min, theta_2_m
             if (old_codes[i] != 1):
                 new_path_vertices.append(old_vertex)
                 new_path_codes.append(old_codes[i])
-    
+
     new_path = Path(new_path_vertices, new_path_codes)
-    
+
     patches[0].remove()
     patches[1].remove()
     patches[2].remove()
@@ -163,7 +163,7 @@ def plot_working_area(l_1, l_2, theta_1_min, theta_1_max, theta_2_min, theta_2_m
     ax.add_patch(path_patch)
     if (plot == True):
         plt.show()
-    return [ax, plt]
+    return [ax, plt, fig]
 
 
 def is_point_inside_working_area(point):

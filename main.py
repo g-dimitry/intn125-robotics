@@ -32,12 +32,9 @@ elif (mode == 2):
     l_2 = int(input("Please input link 2 length: "))
     x = int(input("Please input x: "))
     y = int(input("Please input y: "))
-    theta_2 = math.acos((x*x + y*y - l_1 * l_1 - l_2 * l_2)/(2 * l_1 * l_2))
-    theta_1 = math.atan(
-        y/x) - math.atan((l_2 * math.sin(theta_2))/(l_1 + l_2 * math.cos(theta_2)))
-    inverse_kinematics(l_1, l_2, x, y)
-    print(math.degrees(theta_1))
-    print(math.degrees(theta_2))
+    [theta_1, theta_2] = inverse_kinematics(l_1, l_2, x, y)
+    print(theta_1)
+    print(theta_2)
 elif (mode == 3):
     l_1 = int(input("Please input link 1 length: "))
     l_2 = int(input("Please input link 2 length: "))
@@ -59,4 +56,5 @@ elif (mode == 4):
     start_y = float(input("Please input start y: "))
     end_x = float(input("Please input end x: "))
     end_y = float(input("Please input end y: "))
-    find_path(resolution, l_1, l_2, theta_1_min, theta_1_max, theta_2_min, theta_2_max, start_x, start_y, end_x, end_y)
+    find_path(resolution, l_1, l_2, theta_1_min, theta_1_max,
+              theta_2_min, theta_2_max, start_x, start_y, end_x, end_y)
