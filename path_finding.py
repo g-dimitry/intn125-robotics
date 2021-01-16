@@ -32,17 +32,11 @@ def animation_frame(i, l_1, l_2, line_1, line_2, path, resolution, lim, theta_1_
     link_1_start_y = 0
     link_1_end_x = l_1 * math.cos(theta_1)
     link_1_end_y = l_1 * math.sin(theta_1)
-    print("link 1")
-    print(math.sqrt(math.pow(link_1_end_x - link_1_start_x, 2) +
-                    math.pow(link_1_end_y - link_1_start_y, 2)))
 
     link_2_start_x = link_1_end_x
     link_2_start_y = link_1_end_y
     link_2_end_x = target_x
     link_2_end_y = target_y
-    print("link 2")
-    print(math.sqrt(math.pow(link_2_end_x - link_2_start_x, 2) +
-                    math.pow(link_2_end_y - link_2_start_y, 2)))
 
     line_1.set_xdata([link_1_start_x, link_1_end_x])
     line_1.set_ydata([link_1_start_y, link_1_end_y])
@@ -57,6 +51,10 @@ def find_path(resolution, l_1, l_2, theta_1_min, theta_1_max, theta_2_min, theta
     tmp = start_x
     start_x = start_y
     start_y = tmp
+    tmp = end_x
+    end_x = end_y
+    end_y = tmp
+
 
     x_values = np.arange(-lim, lim, resolution)
     y_values = np.arange(-lim, lim, resolution)

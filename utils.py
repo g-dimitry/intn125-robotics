@@ -47,8 +47,6 @@ def inverse_kinematics(l1, l2, x, y):
             tmp = np.math.atan2(l2 * np.sin(theta2_goal),
                                 (l1 + l2 * np.cos(theta2_goal)))
             theta1_goal = np.math.atan2(y, x) - tmp
-        print(theta1_goal)
-        print(theta2_goal)
         return [math.degrees(theta1_goal), math.degrees(theta2_goal)]
     except:
         return None

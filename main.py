@@ -33,7 +33,9 @@ elif (mode == 2):
     x = int(input("Please input x: "))
     y = int(input("Please input y: "))
     [theta_1, theta_2] = inverse_kinematics(l_1, l_2, x, y)
+    print("Theta 1")
     print(theta_1)
+    print("Theta 2")
     print(theta_2)
 elif (mode == 3):
     l_1 = int(input("Please input link 1 length: "))
