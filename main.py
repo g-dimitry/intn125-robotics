@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import math
 from working_area import plot_working_area
 from utils import forward_kinematics, angle, inverse_kinematics
-
+from path_finding import find_path
 # Modes:
 # 1 - Forward Kinematics
 # 2 - Inverse Kinematics
@@ -16,7 +16,7 @@ print("Modes: \n")
 print("1) Forward Kinematics \n")
 print("2) Inverse Kinematics \n")
 print("3) Working Area \n")
-print("4) Robot Animation \n")
+print("4) Path finding \n")
 mode = int(input("Please select a mode: "))
 
 if (mode == 1):
@@ -47,3 +47,16 @@ elif (mode == 3):
     theta_2_max = int(input("Please input theta 2 max in angles: "))
     plot_working_area(
         l_1, l_2, theta_1_min, theta_1_max, theta_2_min, theta_2_max)
+elif (mode == 4):
+    resolution = float(input("Please input resolution: "))
+    l_1 = int(input("Please input link 1 length: "))
+    l_2 = int(input("Please input link 2 length: "))
+    theta_1_min = int(input("Please input theta 1 min in angles: "))
+    theta_1_max = int(input("Please input theta 1 max in angles: "))
+    theta_2_min = int(input("Please input theta 2 min in angles: "))
+    theta_2_max = int(input("Please input theta 2 max in angles: "))
+    start_x = float(input("Please input start x: "))
+    start_y = float(input("Please input start y: "))
+    end_x = float(input("Please input end x: "))
+    end_y = float(input("Please input end y: "))
+    find_path(resolution, l_1, l_2, theta_1_min, theta_1_max, theta_2_min, theta_2_max, start_x, start_y, end_x, end_y)

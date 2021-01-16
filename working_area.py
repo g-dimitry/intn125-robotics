@@ -9,6 +9,7 @@ from matplotlib.collections import PathCollection
 
 patches = []
 paths = []
+global_path = None
 
 
 def plot_working_area(l_1, l_2, theta_1_min, theta_1_max, theta_2_min, theta_2_max, plot=True):
@@ -129,22 +130,6 @@ def plot_working_area(l_1, l_2, theta_1_min, theta_1_max, theta_2_min, theta_2_m
     ################################################################
     ax.set_title("Working Area = {wa:.3f}".format(wa=wa))
 
-    # tr1 = patches[0].get_transform()
-    # t1 = tr1.transform_path(patches[0].get_path())
-    # t1.vertices = t1.vertices[:-5]
-    # t1.codes = t1.codes[:-6]
-    # t1.codes = np.concatenate((t1.codes, np.array([2])))
-
-    # tr2 = patches[1].get_transform()
-    # t2 = tr2.transform_path(patches[1].get_path())
-    # tr3 = patches[2].get_transform()
-    # t3 = tr3.transform_path(patches[2].get_path())
-    # tr4 = patches[3].get_transform()
-    # t4 = tr4.transform_path(patches[3].get_path())
-
-    # vertices = np.concatenate((t1.vertices[:],t2.vertices[:],t3.vertices[:],t4.vertices[:]))
-    # cores = np.concatenate((t1.codes[:],t2.codes[:],t3.codes[:],t4.codes[:]))
-
     new_path = Path.make_compound_path(
         paths[0],
         paths[3],
@@ -173,27 +158,18 @@ def plot_working_area(l_1, l_2, theta_1_min, theta_1_max, theta_2_min, theta_2_m
     patches[2].remove()
     patches[3].remove()
 
-    # path = Path(vertices, cores)
-
-    # path2 = path.arc()
-    # patches[0].remove()
-    # patches[1].remove()
-    # patches[3].remove()
-    # patches[2].remove()
-
-    path_patch = PathPatch(new_path, hatch='/', clip_on=True)
+    path_patch = PathPatch(new_path, fill=False, hatch='/', clip_on=True)
+    patches.append(path_patch)
     ax.add_patch(path_patch)
-    plt.savefig("5ara", format="svg")
     if (plot == True):
         plt.show()
+    return [ax, plt]
 
 
 def is_point_inside_working_area(point):
     isInside = False
-    for patch in patches:
-        transformed_point = patch.get_transform().transform(point)
-        contains = patch.contains_point(transformed_point)
-        if (contains == True):
-            isInside = True
-            break
+    transformed_point = patches[4].get_transform().transform(point)
+    contains = patches[4].contains_point(transformed_point)
+    if (contains == True):
+        isInside = True
     return isInside
